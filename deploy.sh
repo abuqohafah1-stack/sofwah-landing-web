@@ -1,27 +1,25 @@
-#!/usr/bin/env bash
-# ── SOFWAH-WEB · Laravel Forge deploy script ────────────────────────────────
-# Paste this into the Forge site's "Deploy Script" (adjust $FORGE_* if needed).
-# Enable Quick Deploy so it runs on every push to `main`.
-set -e
+# ── SOFWAH-WEB · Laravel Forge deploy script (zero-downtime releases) ────────
+# Paste this into the Forge site's "Deploy Script". Enable Quick Deploy on main.
 
-cd "$FORGE_SITE_PATH"
+$CREATE_RELEASE()
 
-git pull origin main
+cd $FORGE_RELEASE_DIRECTORY
 
-# PHP dependencies (production)
-$FORGE_COMPOSER install --no-interaction --prefer-dist --optimize-autoloader --no-dev
+# storage/ is symlinked to shared storage BEFORE this runs; on a fresh site those
+# framework dirs may not exist yet, so Composer's package:discover fails with
+# "Please provide a valid cache path". Create them (and bootstrap/cache) first.
+mkdir -p storage/framework/cache/data storage/framework/sessions storage/framework/views storage/logs bootstrap/cache
 
-# Frontend build (Node is build-time only; no Node runtime in production)
-npm ci
+$FORGE_COMPOSER install --no-dev --no-interaction --prefer-dist --optimize-autoloader
+
+# --include=dev so Vite/Tailwind (devDependencies) are available for the build
+npm ci --include=dev || npm install --include=dev
 npm run build
 
-# Database
+$FORGE_PHP artisan optimize
+$FORGE_PHP artisan storage:link
 $FORGE_PHP artisan migrate --force
 
-# Caches
-$FORGE_PHP artisan config:cache
-$FORGE_PHP artisan route:cache
-$FORGE_PHP artisan view:cache
+$ACTIVATE_RELEASE()
 
-# Restart the Redis queue worker so it picks up new code
-$FORGE_PHP artisan queue:restart
+$RESTART_QUEUES()
