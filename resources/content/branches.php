@@ -35,7 +35,7 @@ return [
         'open'   => '12:00', 'close' => '21:00',
         'wa'     => 'https://wasap.my/601154040068',
         'maps'   => 'https://goo.gl/maps/FKo6uQ6EVz2EwHTe6',
-        'rating' => '4.9', 'reviews' => null, 'price' => 'RM1–40',
+        'rating' => '4.9', 'reviews' => 1949, 'price' => 'RM1–100',
         'lat'    => 6.2619652, 'lng' => 100.6136195,
     ],
     [
@@ -48,7 +48,7 @@ return [
         'open'   => '11:00', 'close' => '23:00',
         'wa'     => 'https://wasap.my/601168714468',
         'maps'   => 'https://maps.app.goo.gl/cmPZ8A5zMPcgmAgt8',
-        'rating' => '4.8', 'reviews' => null, 'price' => 'RM1–40',
+        'rating' => '4.8', 'reviews' => 2020, 'price' => 'RM20–40',
         'lat'    => null, 'lng' => null,
     ],
     [
