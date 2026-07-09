@@ -5,6 +5,14 @@ $CREATE_RELEASE()
 
 cd $FORGE_RELEASE_DIRECTORY
 
+# Fail fast with a clear message if the checkout is incomplete (e.g. a stale
+# release), instead of a confusing "Could not open input file: artisan" later.
+if [ ! -f artisan ] || [ ! -f bootstrap/app.php ] || [ ! -f public/index.php ]; then
+    echo "FATAL: incomplete checkout — artisan / bootstrap/app.php / public/index.php missing."
+    echo "Deploy a fresh clone of origin/main (these files are present there)."
+    exit 1
+fi
+
 # storage/ is symlinked to shared storage BEFORE this runs; on a fresh site those
 # framework dirs may not exist yet, so Composer's package:discover fails with
 # "Please provide a valid cache path". Create them (and bootstrap/cache) first.
