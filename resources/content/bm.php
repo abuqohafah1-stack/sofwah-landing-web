@@ -180,6 +180,7 @@ return [
         'order_label'    => 'Order WhatsApp',
         'navigate_label' => 'Navigate',
         'rating_suffix'  => 'di Google',
+        'hours_label'    => 'Buka',
         'highlights'     => [
             'gurun'              => 'Rasa Arab yang hangat di Gurun.',
             'kuala-nerang'       => 'Hidangan Mendy autentik di Kuala Nerang.',

@@ -173,6 +173,7 @@ return [
         'order_label'    => 'Order on WhatsApp',
         'navigate_label' => 'Navigate',
         'rating_suffix'  => 'on Google',
+        'hours_label'    => 'Open',
         'highlights'     => [
             'gurun'              => 'Warm Arabic taste in Gurun.',
             'kuala-nerang'       => 'Authentic Mendy in Kuala Nerang.',

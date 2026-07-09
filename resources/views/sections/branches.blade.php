@@ -14,10 +14,13 @@
                             Sofwah {{ $b['city'] }}@if ($b['area'])<span class="text-ink-3"> · {{ $b['area'] }}</span>@endif
                         </h3>
                         <span class="inline-flex shrink-0 items-center gap-1 rounded-full bg-brand/15 px-2.5 py-1 text-xs font-semibold text-accent">
-                            ★ {{ $b['rating'] }} <span class="font-normal text-ink-3">{{ $c['branches']['rating_suffix'] }}</span>
+                            ★ {{ $b['rating'] }}
+                            <span class="font-normal text-ink-3">@if ($b['reviews'])({{ number_format($b['reviews']) }})@else{{ $c['branches']['rating_suffix'] }}@endif</span>
                         </span>
                     </div>
                     <p class="mt-2 text-sm text-ink-2">{{ $c['branches']['highlights'][$b['key']] ?? '' }}</p>
+                    <p class="mt-3 text-xs leading-relaxed text-ink-3">{{ $b['address'] }}</p>
+                    <p class="mt-1.5 text-xs text-ink-3">{{ $c['branches']['hours_label'] }} {{ $b['open'] }}–{{ $b['close'] }}</p>
 
                     <div class="mt-auto flex gap-2 pt-6">
                         <a href="{{ $b['wa'] }}" target="_blank" rel="noopener"

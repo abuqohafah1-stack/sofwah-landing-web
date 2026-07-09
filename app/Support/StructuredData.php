@@ -33,6 +33,15 @@ class StructuredData
             $name  = 'Sofwah ' . $b['city'] . (! empty($b['area']) ? ' — ' . $b['area'] : '');
             $phone = '+' . ltrim(substr(strrchr($b['wa'], '/'), 1), '+'); // wasap.my/60142... -> +60142...
 
+            $address = [
+                '@type'           => 'PostalAddress',
+                'addressLocality' => $b['city'],
+                'addressRegion'   => 'Kedah',
+                'addressCountry'  => 'MY',
+            ];
+            if (! empty($b['street']))   $address['streetAddress'] = $b['street'];
+            if (! empty($b['postcode'])) $address['postalCode']    = $b['postcode'];
+
             $node = [
                 '@type'              => 'Restaurant',
                 '@id'                => $baseUrl . '/#branch-' . $b['key'],
@@ -40,25 +49,38 @@ class StructuredData
                 'url'                => $baseUrl . '/#cawangan',
                 'image'              => $baseUrl . '/images/hero/cover-home-1920.jpg',
                 'servesCuisine'      => ['Arabic', 'Middle Eastern', 'Halal'],
-                'priceRange'         => '$$',
+                'priceRange'         => $b['price'] ?? '$$',
                 'telephone'          => $phone,
                 'parentOrganization' => ['@id' => $baseUrl . '/#organization'],
-                'address'            => [
-                    '@type'           => 'PostalAddress',
-                    'addressLocality' => $b['city'],
-                    'addressRegion'   => 'Kedah',
-                    'addressCountry'  => 'MY',
-                    // 'streetAddress' + 'postalCode': TODO before go-live.
-                ],
+                'address'            => $address,
                 'areaServed'         => $b['city'] . ', Kedah',
                 'hasMap'             => $b['maps'],
             ];
+
+            if (! empty($b['open']) && ! empty($b['close'])) {
+                $node['openingHoursSpecification'] = [[
+                    '@type'     => 'OpeningHoursSpecification',
+                    'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                    'opens'     => $b['open'],
+                    'closes'    => $b['close'],
+                ]];
+            }
 
             if (! empty($b['lat']) && ! empty($b['lng'])) {
                 $node['geo'] = [
                     '@type'     => 'GeoCoordinates',
                     'latitude'  => $b['lat'],
                     'longitude' => $b['lng'],
+                ];
+            }
+
+            // Real Google review count → valid AggregateRating (only where known).
+            if (! empty($b['reviews'])) {
+                $node['aggregateRating'] = [
+                    '@type'       => 'AggregateRating',
+                    'ratingValue' => $b['rating'],
+                    'reviewCount' => $b['reviews'],
+                    'bestRating'  => '5',
                 ];
             }
 

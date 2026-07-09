@@ -1,6 +1,7 @@
 {{-- sections/wall-of-love.blade.php — REVIEW / Trust. Real Google ratings + accolade. --}}
 <section id="reviews" class="border-t border-white/5">
     <div class="mx-auto max-w-content px-6 py-24 md:py-32">
+        @php $totalReviews = collect($branches)->sum('reviews'); @endphp
         <div class="grid gap-8 md:grid-cols-[1.3fr_1fr] md:items-end">
             <x-section-heading
                 :eyebrow="$c['reviews']['eyebrow']"
@@ -12,7 +13,7 @@
                     <span class="font-display text-5xl font-extrabold text-gold">{{ $c['reviews']['avg'] }}</span>
                     <span class="text-2xl text-accent">★</span>
                 </div>
-                <p class="mt-1 text-xs text-ink-3">{{ $c['reviews']['avg_label'] }} · {{ $c['reviews']['branches_label'] }}</p>
+                <p class="mt-1 text-xs text-ink-3">{{ $c['reviews']['avg_label'] }} · {{ number_format($totalReviews) }}+ review · {{ $c['reviews']['branches_label'] }}</p>
             </div>
         </div>
 
@@ -24,7 +25,7 @@
                 <a href="{{ $b['maps'] }}" target="_blank" rel="noopener"
                    class="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-surface px-3 py-1.5 text-xs text-ink-2 transition hover:border-white/25">
                     Sofwah {{ $b['city'] }}@if ($b['area']) <span class="text-ink-3">({{ $b['area'] }})</span>@endif
-                    <span class="font-semibold text-accent">★ {{ $b['rating'] }}</span>
+                    <span class="font-semibold text-accent">★ {{ $b['rating'] }}</span>@if ($b['reviews'])<span class="text-ink-3">· {{ number_format($b['reviews']) }}</span>@endif
                 </a>
             @endforeach
         </div>
