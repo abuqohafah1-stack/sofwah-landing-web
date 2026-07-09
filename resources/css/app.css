@@ -1,0 +1,90 @@
+/* =============================================================================
+   SOFWAH-WEB · app.css
+   Brand DNA design tokens + self-hosted typography (Poppins + Tajawal)
+   Locked to Sofwah Brand DNA. Do NOT introduce off-brand colors or fonts.
+   ========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   SELF-HOSTED FONTS — WOFF2, font-display: swap
+   Source files: resources/fonts/*  (copied to public/fonts on build)
+   Poppins  = display + body   ·   Tajawal = Arabic / accent script
+   Preload the hero weight (Poppins 700/800) in <head>.
+   --------------------------------------------------------------------------- */
+@font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/poppins-400.woff2') format('woff2');}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/poppins-500.woff2') format('woff2');}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/poppins-600.woff2') format('woff2');}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/poppins-700.woff2') format('woff2');}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:800;font-display:swap;src:url('/fonts/poppins-800.woff2') format('woff2');}
+
+/* Tajawal — Latin glyphs */
+@font-face{font-family:'Tajawal';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/tajawal-latin-400.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Tajawal';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/tajawal-latin-500.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Tajawal';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/tajawal-latin-700.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+/* Tajawal — Arabic glyphs (dish names, ornaments) */
+@font-face{font-family:'Tajawal';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/tajawal-arabic-400.woff2') format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0898-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC;}
+@font-face{font-family:'Tajawal';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/tajawal-arabic-500.woff2') format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0898-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC;}
+@font-face{font-family:'Tajawal';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/tajawal-arabic-700.woff2') format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0898-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC;}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   BRAND DNA TOKENS (exact hex — do not invent shades)
+   --------------------------------------------------------------------------- */
+:root{
+  --bg:#0B0B0D;        /* Primary background   · ~70% */
+  --surface:#151517;   /* Secondary surface    · cards, bento */
+  --brand:#730D04;     /* Deep Arabic Red      · ~15% · primary CTA, active */
+  --accent:#FF9A06;    /* Golden Orange        · ~10% · hover, ratings, highlights */
+  --gold:#FFDA7C;      /* Luxury Gold          · ~5%  · signature/VIP, sparingly */
+  --text:#FFFFFF;      /* Primary text */
+  --text-2:#D1D5DB;    /* Secondary text */
+  --text-3:#9CA3AF;    /* Muted text */
+
+  /* Glassmorphism (Brand DNA spec) */
+  --glass-bg:rgba(255,255,255,0.05);
+  --glass-border:rgba(255,255,255,0.08);
+  --glass-blur:28px;
+}
+
+@layer base{
+  html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+  body{
+    background-color:var(--bg);
+    color:var(--text);
+    font-family:'Poppins',ui-sans-serif,system-ui,-apple-system,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  :lang(ar), [dir="rtl"], .font-arabic{ font-family:'Tajawal',sans-serif; }
+  h1,h2,h3{ font-family:'Poppins',sans-serif; letter-spacing:-0.01em; }
+  ::selection{ background:var(--brand); color:#fff; }
+}
+
+/* Alpine: hide x-cloak elements (order sheet) until Alpine initialises */
+[x-cloak]{ display:none !important; }
+
+@layer components{
+  /* Brand DNA glass surface (nav, floating cards, testimonials, bento) */
+  .glass{
+    background:var(--glass-bg);
+    border:1px solid var(--glass-border);
+    -webkit-backdrop-filter:blur(var(--glass-blur));
+    backdrop-filter:blur(var(--glass-blur));
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   ACCESSIBILITY — reduced motion (WCAG 2.1 AA · Section 15)
+   Disable parallax/pinning; keep all content fully usable.
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+  }
+}
