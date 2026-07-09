@@ -5,13 +5,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingController::class, 'index'])->name('landing');
 
-// robots.txt (dynamic so the sitemap URL follows APP_URL per environment)
-Route::get('/robots.txt', function () {
-    $base = rtrim(config('app.url') ?: url('/'), '/');
-    $body = "User-agent: *\nAllow: /\nSitemap: {$base}/sitemap.xml\n";
-
-    return response($body, 200, ['Content-Type' => 'text/plain']);
-});
+// robots.txt is a static file at public/robots.txt — Forge's nginx has a
+// `location = /robots.txt` block that serves it directly (a Laravel route would
+// never be reached), so it must be a real file, not a route.
 
 // XML sitemap (single-page site, BM + EN)
 Route::get('/sitemap.xml', function () {
