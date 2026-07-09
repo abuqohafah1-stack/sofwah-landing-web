@@ -18,7 +18,11 @@ npm run build
 
 $FORGE_PHP artisan optimize
 $FORGE_PHP artisan storage:link
-$FORGE_PHP artisan migrate --force
+
+# Non-blocking: the landing page queries no database, so a first deploy must
+# not fail if the DB isn't ready yet. Migrations (leads table) apply as soon as
+# the DB is configured — on this or any later deploy.
+$FORGE_PHP artisan migrate --force --graceful || true
 
 $ACTIVATE_RELEASE()
 
