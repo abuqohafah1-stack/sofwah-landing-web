@@ -4,7 +4,10 @@ import sharp from 'sharp';
 import { readdir, stat } from 'node:fs/promises';
 import path from 'node:path';
 
-const dirs = ['public/images/hero', 'public/images/menu', 'public/images/gallery'];
+const dirs = [
+    'public/images/hero', 'public/images/menu', 'public/images/gallery',
+    'public/images/menu-ai', 'public/images/trust',
+];
 const kb = (n) => Math.round(n / 1024);
 
 let jpg = 0, webp = 0, avif = 0;
@@ -12,9 +15,9 @@ let jpg = 0, webp = 0, avif = 0;
 for (const dir of dirs) {
     let files;
     try { files = await readdir(dir); } catch { continue; }
-    for (const f of files.filter((x) => /\.jpe?g$/i.test(x))) {
+    for (const f of files.filter((x) => /\.(jpe?g|png)$/i.test(x))) {
         const src = path.join(dir, f);
-        const base = src.replace(/\.jpe?g$/i, '');
+        const base = src.replace(/\.(jpe?g|png)$/i, '');
         const input = sharp(src);
 
         await input.clone().webp({ quality: 78 }).toFile(base + '.webp');

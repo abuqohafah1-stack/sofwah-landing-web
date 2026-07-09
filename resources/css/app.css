@@ -66,6 +66,19 @@
 /* Alpine: hide x-cloak elements (order sheet) until Alpine initialises */
 [x-cloak]{ display:none !important; }
 
+/* Warm ambient glow behind a section (softens the dark, adds depth) */
+.warm-glow{ position:relative; }
+.warm-glow::before{
+  content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(50% 40% at 12% 0%, rgba(255,154,6,.10), transparent 60%),
+    radial-gradient(55% 45% at 90% 100%, rgba(115,13,4,.28), transparent 62%);
+}
+.warm-glow > *{ position:relative; z-index:1; }
+
+/* Hero food-card float (respects reduced-motion via the block below) */
+@keyframes heroFloat{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-10px) } }
+
 @layer components{
   /* Brand DNA glass surface (nav, floating cards, testimonials, bento) */
   .glass{

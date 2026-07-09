@@ -1,10 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- 1 · Hero — REALIZE --}}
-    <x-hero :hero="$c['hero']" image="images/hero/cover-home-1920.jpg" order-url="#cawangan" />
+    {{-- 1 · Hero — story + craving (Mendy showcase, warm, 3D) --}}
+    <x-hero :hero="$c['hero']" order-url="#cawangan" />
 
-    {{-- 2 · Signature Dining — RASA / Desire --}}
+    {{-- 2 · Trust Stack — certifications + amenities --}}
+    @include('sections.trust')
+
+    {{-- 3 · Signature Dining — RASA / Desire --}}
     @include('sections.signature-dining')
 
     {{-- 3 · Why Sofwah — Trust --}}
