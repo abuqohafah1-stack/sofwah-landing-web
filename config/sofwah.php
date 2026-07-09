@@ -8,8 +8,10 @@
 */
 
 return [
-    // GA4 Measurement ID, e.g. "G-XXXXXXXXXX". Null = analytics disabled.
-    'ga4' => env('GA4_ID'),
+    // GA4 Measurement ID. Falls back to the live Sofwah ID when GA4_ID is unset
+    // or empty (a Measurement ID is public — it appears in the page HTML — so it
+    // is safe to commit). Override via GA4_ID in .env if it ever changes.
+    'ga4' => env('GA4_ID') ?: 'G-WSP3PRXGD6',
 
     // Default WhatsApp order number (fallback). Per-branch numbers live in
     // resources/content/branches.php.
