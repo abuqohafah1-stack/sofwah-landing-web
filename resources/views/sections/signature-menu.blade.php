@@ -21,9 +21,9 @@
 
         {{-- Photo grid — the rest --}}
         <h3 class="mt-20 text-xs font-semibold uppercase tracking-[0.2em] text-ink-3">{{ $c['menu']['more_label'] }}</h3>
-        <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" data-reveal-stagger>
             @foreach ($rest as $dish)
-                <a href="#cawangan" class="group relative overflow-hidden rounded-xl2 border border-white/10">
+                <a href="#cawangan" class="ring-hover group relative overflow-hidden rounded-xl2 border border-white/10">
                     <x-img :src="$dish['image']" :alt="$dish['name']"
                            class="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-[1.06]" />
                     <div class="absolute inset-0" style="background:linear-gradient(180deg,transparent 40%,rgba(11,11,13,.85) 100%)"></div>

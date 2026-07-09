@@ -13,7 +13,7 @@
             :heading="$c['dining']['heading']"
             :body="$c['dining']['body']" />
 
-        <div class="mt-12 grid gap-4 sm:grid-cols-3">
+        <div class="mt-12 grid gap-4 sm:grid-cols-3" data-reveal-stagger>
             @foreach ($c['dining']['senses'] as $s)
                 <div class="glass rounded-xl2 p-6">
                     <p class="text-xs font-semibold uppercase tracking-[0.16em] text-gold">{{ $s['label'] }}</p>

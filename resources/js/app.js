@@ -1,11 +1,10 @@
 /*
- * Alpine is provided and started by Livewire 3 — do NOT import/start another
- * instance here. This module owns analytics + cinematic motion. GSAP/Lenis are
- * dynamically imported (a separate chunk) so they never block first paint, and
- * all motion is skipped for reduced-motion users (WCAG 2.1 AA).
+ * Alpine is provided by Livewire 3. This module owns analytics + cinematic
+ * motion. GSAP/Lenis are dynamically imported (separate chunk, after first
+ * paint). ALL motion is skipped for prefers-reduced-motion (WCAG 2.1 AA).
  */
 
-// GA4 events (no-op until GA4 is configured in .env).
+// GA4 events (no-op until GA4 is configured).
 const track = (name, params = {}) => {
     if (typeof window.gtag === 'function') window.gtag('event', name, params);
 };
@@ -26,27 +25,74 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     ]).then(([{ default: gsap }, { ScrollTrigger }, { default: Lenis }]) => {
         gsap.registerPlugin(ScrollTrigger);
 
-        const lenis = new Lenis({ lerp: 0.12, smoothWheel: true });
-        const raf = (time) => { lenis.raf(time); requestAnimationFrame(raf); };
+        /* ---- Premium smooth scroll ---- */
+        const lenis = new Lenis({ lerp: 0.11, smoothWheel: true });
+        const raf = (t) => { lenis.raf(t); requestAnimationFrame(raf); };
         requestAnimationFrame(raf);
         lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.lagSmoothing(0);
 
-        gsap.from('#hero [data-hero-el]', {
-            y: 24, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.12, delay: 0.15,
-        });
-        gsap.to('#hero [data-hero-media] img', {
-            scale: 1.08, ease: 'none',
-            scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true },
-        });
-        gsap.to('[data-hero-scrollcue]', {
-            y: 7, opacity: 0.25, repeat: -1, yoyo: true, duration: 1.1, ease: 'sine.inOut',
-        });
+        /* ---- Hero: orchestrated entrance ---- */
+        gsap.timeline({ defaults: { ease: 'power3.out' } })
+            .from('#hero [data-hero-el]', { y: 30, opacity: 0, duration: 0.9, stagger: 0.14, delay: 0.1 })
+            .from('#hero [data-float] > *', { opacity: 0, y: 20, scale: 0.94, duration: 0.7, stagger: 0.12 }, '-=0.5');
 
-        document.querySelectorAll('[data-reveal]').forEach((el) => {
+        gsap.to('[data-hero-scrollcue]', { y: 7, opacity: 0.2, repeat: -1, yoyo: true, duration: 1.1, ease: 'sine.inOut' });
+
+        /* ---- Scroll reveals (single elements) ---- */
+        gsap.utils.toArray('[data-reveal]').forEach((el) => {
             gsap.from(el, {
-                y: 28, opacity: 0, duration: 0.8, ease: 'power2.out',
-                scrollTrigger: { trigger: el, start: 'top 85%' },
+                opacity: 0, y: 34, duration: 0.9, ease: 'power3.out',
+                scrollTrigger: { trigger: el, start: 'top 86%' },
             });
         });
+
+        /* ---- Scroll reveals (staggered groups: grids, rows) ---- */
+        gsap.utils.toArray('[data-reveal-stagger]').forEach((group) => {
+            gsap.from(group.children, {
+                opacity: 0, y: 30, scale: 0.97, duration: 0.7, ease: 'power3.out', stagger: 0.08,
+                scrollTrigger: { trigger: group, start: 'top 84%' },
+            });
+        });
+
+        /* ---- Count-up stats ---- */
+        gsap.utils.toArray('[data-count]').forEach((el) => {
+            const end = parseFloat(el.dataset.count);
+            const decimals = /\./.test(el.dataset.count) ? 1 : 0;
+            const suffix = el.dataset.suffix || '';
+            const state = { v: 0 };
+            gsap.to(state, {
+                v: end, duration: 1.8, ease: 'power2.out',
+                scrollTrigger: { trigger: el, start: 'top 92%', once: true },
+                onUpdate: () => {
+                    const n = decimals ? state.v.toFixed(1) : Math.round(state.v).toLocaleString('en-US');
+                    el.textContent = n + suffix;
+                },
+            });
+        });
+
+        /* ---- Gentle parallax on tagged images ---- */
+        gsap.utils.toArray('[data-parallax] img, img[data-parallax]').forEach((img) => {
+            gsap.to(img, {
+                yPercent: -8, ease: 'none',
+                scrollTrigger: { trigger: img, start: 'top bottom', end: 'bottom top', scrub: true },
+            });
+        });
+
+        /* ---- Cursor-parallax 3D tilt on the hero food card (fine pointers only) ---- */
+        const tilt = document.querySelector('[data-tilt]');
+        if (tilt && window.matchMedia('(pointer:fine)').matches) {
+            const inner = tilt.querySelector('[data-tilt-inner]') || tilt;
+            const setX = gsap.quickTo(inner, 'rotationY', { duration: 0.6, ease: 'power3' });
+            const setY = gsap.quickTo(inner, 'rotationX', { duration: 0.6, ease: 'power3' });
+            tilt.addEventListener('mousemove', (e) => {
+                const r = tilt.getBoundingClientRect();
+                const px = (e.clientX - r.left) / r.width - 0.5;
+                const py = (e.clientY - r.top) / r.height - 0.5;
+                setX(px * 16);
+                setY(py * -12);
+            });
+            tilt.addEventListener('mouseleave', () => { setX(0); setY(0); });
+        }
     });
 }

@@ -79,6 +79,29 @@
 /* Hero food-card float (respects reduced-motion via the block below) */
 @keyframes heroFloat{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-10px) } }
 
+/* Animated aurora glow — soft drifting light behind the hero */
+.aurora{ position:absolute; border-radius:50%; filter:blur(64px); pointer-events:none; mix-blend-mode:screen; will-change:transform; }
+@keyframes auroraDrift{ 0%{ transform:translate(0,0) scale(1) } 50%{ transform:translate(7%,-5%) scale(1.18) } 100%{ transform:translate(0,0) scale(1) } }
+
+/* Card glow-lift on hover */
+.glow-card{ transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, border-color .35s; }
+.glow-card:hover{ transform:translateY(-6px); box-shadow:0 30px 60px -24px rgba(255,154,6,.32); border-color:rgba(255,218,124,.4); }
+
+/* Shimmer sweep on primary buttons */
+.shimmer{ position:relative; overflow:hidden; }
+.shimmer::after{ content:""; position:absolute; top:0; left:-60%; width:40%; height:100%;
+  background:linear-gradient(105deg, transparent, rgba(255,255,255,.28), transparent); transform:skewX(-18deg); }
+.shimmer:hover::after{ animation:shimmerSweep .8s ease; }
+@keyframes shimmerSweep{ from{ left:-60% } to{ left:130% } }
+
+/* Gradient hover ring for tiles/cards */
+.ring-hover{ position:relative; }
+.ring-hover::before{ content:""; position:absolute; inset:0; border-radius:inherit; padding:1px;
+  background:linear-gradient(135deg, rgba(255,218,124,.7), rgba(255,154,6,.2), transparent 60%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude; opacity:0; transition:opacity .35s; z-index:2; pointer-events:none; }
+.ring-hover:hover::before{ opacity:1; }
+
 @layer components{
   /* Brand DNA glass surface (nav, floating cards, testimonials, bento) */
   .glass{

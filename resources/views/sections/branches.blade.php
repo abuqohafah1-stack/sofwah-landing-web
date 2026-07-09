@@ -6,9 +6,9 @@
             :heading="$c['branches']['heading']"
             :body="$c['branches']['body']" />
 
-        <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-reveal-stagger>
             @foreach ($branches as $b)
-                <div class="flex flex-col rounded-xl2 border border-white/10 bg-surface p-6">
+                <div class="glow-card flex flex-col rounded-xl2 border border-white/10 bg-surface p-6">
                     <div class="flex items-start justify-between gap-3">
                         <h3 class="font-display text-lg font-semibold text-ink">
                             Sofwah {{ $b['city'] }}@if ($b['area'])<span class="text-ink-3"> · {{ $b['area'] }}</span>@endif

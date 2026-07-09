@@ -6,7 +6,7 @@
     'align'   => 'start', // start | center
 ])
 
-<div class="{{ $align === 'center' ? 'mx-auto max-w-2xl text-center' : 'max-w-2xl' }}">
+<div class="{{ $align === 'center' ? 'mx-auto max-w-2xl text-center' : 'max-w-2xl' }}" data-reveal>
     @if ($eyebrow)
         <span class="text-xs font-semibold uppercase tracking-[0.22em] text-accent">{{ $eyebrow }}</span>
     @endif

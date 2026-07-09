@@ -144,6 +144,36 @@ return [
                 'suka'      => 'Ringan tapi memuaskan — sesuai untuk semua.',
                 'emosi'     => 'Nikmat panggangan Arab yang tulen.',
             ],
+            [
+                'key' => 'grilled-lamb', 'name' => 'Sawabiq Lahmah', 'arabic' => 'لحم مشوي', 'badge' => null,
+                'image' => 'images/menu-ai/grilled-lamb.jpg',
+                'apa' => 'Daging kambing panggang yang lembut dan berperisa, dengan roti dan dip istimewa.',
+            ],
+            [
+                'key' => 'kuftah-beef', 'name' => 'Kuftah Beef', 'arabic' => 'كفتة لحم', 'badge' => null,
+                'image' => 'images/menu-ai/kuftah-beef.jpg',
+                'apa' => 'Cucuk kufta daging berperisa, dipanggang atas bara sehingga wangi.',
+            ],
+            [
+                'key' => 'shawarma', 'name' => 'Shawarma Platter', 'arabic' => 'شاورما', 'badge' => null,
+                'image' => 'images/menu-ai/shawarma.jpg',
+                'apa' => 'Shawarma gulung berisi daging panggang, sayur segar dan sos istimewa.',
+            ],
+            [
+                'key' => 'al-firdaus', 'name' => 'Al-Firdaus Platter', 'arabic' => 'طبق الفردوس', 'badge' => 'Set Premium',
+                'image' => 'images/menu-ai/al-firdaus.jpg',
+                'apa' => 'Platter premium untuk dikongsi — gabungan nasi Arab dan panggangan pilihan.',
+            ],
+            [
+                'key' => 'beef-daqooz', 'name' => 'Beef Daqooz', 'arabic' => 'دقوس لحم', 'badge' => null,
+                'image' => 'images/menu-ai/beef-daqooz.jpg',
+                'apa' => 'Daging lembu masak Daqooz yang kaya rempah, hidangan istimewa Arab.',
+            ],
+            [
+                'key' => 'meatball', 'name' => 'Arabiata Meatball', 'arabic' => 'كرات اللحم', 'badge' => null,
+                'image' => 'images/menu-ai/meatball.jpg',
+                'apa' => 'Bebola daging berperisa dalam sos Arab, sedap dimakan dengan roti atau nasi.',
+            ],
         ],
     ],
 

@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <div class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" data-reveal-stagger>
             @foreach ($c['why']['proof'] as $p)
                 <div class="rounded-xl2 border border-white/10 bg-surface p-6">
                     <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-brand/15 text-accent" aria-hidden="true">

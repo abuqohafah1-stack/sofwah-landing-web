@@ -139,6 +139,36 @@ return [
                 'suka'     => 'Light yet satisfying — right for everyone.',
                 'emosi'    => 'The taste of true Arabic grilling.',
             ],
+            [
+                'key' => 'grilled-lamb', 'name' => 'Sawabiq Lahmah', 'arabic' => 'لحم مشوي', 'badge' => null,
+                'image' => 'images/menu-ai/grilled-lamb.jpg',
+                'apa' => 'Tender, flavourful grilled lamb served with flatbread and special dips.',
+            ],
+            [
+                'key' => 'kuftah-beef', 'name' => 'Kuftah Beef', 'arabic' => 'كفتة لحم', 'badge' => null,
+                'image' => 'images/menu-ai/kuftah-beef.jpg',
+                'apa' => 'Seasoned beef kufta skewers, char-grilled over coals until fragrant.',
+            ],
+            [
+                'key' => 'shawarma', 'name' => 'Shawarma Platter', 'arabic' => 'شاورما', 'badge' => null,
+                'image' => 'images/menu-ai/shawarma.jpg',
+                'apa' => 'Rolled shawarma with grilled meat, fresh vegetables and a special sauce.',
+            ],
+            [
+                'key' => 'al-firdaus', 'name' => 'Al-Firdaus Platter', 'arabic' => 'طبق الفردوس', 'badge' => 'Premium Set',
+                'image' => 'images/menu-ai/al-firdaus.jpg',
+                'apa' => 'A premium sharing platter — Arabic rice with a selection of grills.',
+            ],
+            [
+                'key' => 'beef-daqooz', 'name' => 'Beef Daqooz', 'arabic' => 'دقوس لحم', 'badge' => null,
+                'image' => 'images/menu-ai/beef-daqooz.jpg',
+                'apa' => 'Rich, spiced Daqooz-style beef — a special Arabic dish.',
+            ],
+            [
+                'key' => 'meatball', 'name' => 'Arabiata Meatball', 'arabic' => 'كرات اللحم', 'badge' => null,
+                'image' => 'images/menu-ai/meatball.jpg',
+                'apa' => 'Seasoned meatballs in an Arabic sauce, great with bread or rice.',
+            ],
         ],
     ],
 
