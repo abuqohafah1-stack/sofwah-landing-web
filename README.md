@@ -7,9 +7,11 @@ family-first — built on the Laravel stack and deployed on Laravel Forge.
 > Bina sebagai *premium digital brand experience* — bukan sekadar website restoran.
 
 ## Stack
-Laravel 11 · PHP 8.3 · MySQL 8 · Redis · Blade (server-rendered) + **Livewire 3** islands +
-**Alpine** (via Livewire) + **Tailwind 3.4** + **Vite** · **GSAP/ScrollTrigger + Lenis**
-(code-split, reduced-motion aware) · self-hosted **Poppins + Tajawal** · AVIF/WebP via `sharp`.
+Laravel 13 · PHP 8.3 · MySQL 8 (SQLite for local) · Redis · Blade (server-rendered) +
+**Livewire 4** islands + **Alpine** (via Livewire) + **Tailwind 3.4** + **Vite** ·
+**GSAP/ScrollTrigger + Lenis** (code-split, reduced-motion aware) · self-hosted
+**Poppins + Tajawal** · AVIF/WebP via `sharp`. Full skeleton + `composer.lock` committed —
+clone-and-deploy ready.
 
 ## Brand DNA (locked)
 Colours `#0B0B0D / #151517 / #730D04 / #FF9A06 / #FFDA7C` + ink ramp, ratio **70/15/10/5**,

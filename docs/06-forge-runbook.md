@@ -7,30 +7,17 @@
 
 ---
 
-## 0. What's in this repo vs generated on deploy
-This repo is the **application layer** (routes, controllers, Blade, Livewire, content, config,
-Tailwind, JS, fonts, optimized images incl. committed AVIF/WebP). The standard Laravel 11
-**framework skeleton** (`artisan`, `bootstrap/`, `public/index.php`, base `config/*`, `storage/`)
-is generated once via Composer and this app layer overlays it. `vendor/` and `node_modules/`
-are never committed (installed on the server).
+## 0. Repo is deploy-ready (skeleton committed)
+This repo is a **complete Laravel 13 app** — the full framework skeleton (`artisan`,
+`bootstrap/`, `config/`, `public/index.php`, `storage/`, `tests/`) **and a committed
+`composer.lock`** are in the repo. Only `vendor/` and `node_modules/` are installed on the
+server. Because `composer install` uses the committed lock, the security-advisory block that
+happened when resolving Laravel 11 fresh with no lock **no longer occurs**.
 
-### One-time bootstrap (on a machine with PHP 8.3 + Composer)
-```bash
-# 1) Generate a fresh Laravel 11 skeleton in a temp dir
-composer create-project laravel/laravel _skeleton "^11.0"
-
-# 2) Copy the skeleton files this repo does NOT already contain
-#    (artisan, bootstrap/, public/index.php, storage/, base config/*, tests/, etc.)
-#    WITHOUT overwriting the app files already here (routes, app/, resources/,
-#    config/sofwah.php, tailwind.config.js, package.json, composer.json, etc.)
-# 3) Require Livewire (already in composer.json): composer require livewire/livewire:^3.5
-# 4) composer install && npm install && npm run build
-# 5) cp .env.example .env && php artisan key:generate
-# 6) commit the skeleton so Forge can clone + composer install
-```
-> Alternatively: start from a fresh `laravel new sofwah-web`, drop this repo's app files on
-> top, then `composer require livewire/livewire`. Either way the result is committed to
-> the private GitHub repo `sofwah-web`.
+**Stack:** Laravel 13 · PHP 8.3 · **Livewire 4** · Tailwind 3.4 · Vite. Verified locally:
+`php artisan serve` renders the full page (BM + EN), Livewire reservation form + review filter
+wired, 8-node JSON-LD valid, `/sitemap.xml` + `/robots.txt` respond. **No bootstrap step
+needed — Forge can clone and deploy directly.**
 
 ---
 
