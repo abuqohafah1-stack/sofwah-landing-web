@@ -187,6 +187,30 @@ return [
         'amenities' => ['Halal', 'Family Friendly', 'Air-Conditioned', 'Surau', 'Easy Parking'],
     ],
 
+    'stats_band' => [
+        'eyebrow' => 'The Numbers Speak',
+        'heading' => 'Trusted. Repeated. Shared.',
+        'since'   => 'Serving Malaysian families since 2018.',
+        'items'   => [
+            ['value' => '10000', 'suffix' => '+', 'label' => 'Happy customers'],
+            ['value' => '8973',  'suffix' => '',  'label' => 'Google reviews'],
+            ['value' => '4.9',   'suffix' => '★', 'label' => 'Average rating'],
+            ['value' => '6',     'suffix' => '',  'label' => 'Branches in Kedah'],
+        ],
+    ],
+
+    'social' => [
+        'eyebrow' => 'Follow Sofwah',
+        'heading' => 'Join thousands sharing their moments.',
+        'body'    => 'Tag us &amp; explore the Sofwah community on social media.',
+        'handle'  => '@sofwah_arabicgrill',
+        'links'   => [
+            ['label' => 'Facebook',  'url' => 'https://www.facebook.com/sofwah_arabicgrill'],
+            ['label' => 'TikTok',    'url' => 'https://www.tiktok.com/@sofwah_arabicgrill'],
+            ['label' => 'Full Menu', 'url' => 'https://heyzine.com/flip-book/b1dccc4f35.html'],
+        ],
+    ],
+
     'reviews' => [
         'eyebrow'        => 'Wall of Love',
         'heading'        => 'Thousands of families have tasted it. Here\'s what they say.',

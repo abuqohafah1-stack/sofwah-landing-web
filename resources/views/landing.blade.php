@@ -7,7 +7,10 @@
     {{-- 2 · Trust Stack — certifications + amenities --}}
     @include('sections.trust')
 
-    {{-- 3 · Signature Dining — RASA / Desire --}}
+    {{-- 3 · Stats band — highlighted count-up numbers --}}
+    @include('sections.stats')
+
+    {{-- 4 · Signature Dining — RASA / Desire --}}
     @include('sections.signature-dining')
 
     {{-- 3 · Why Sofwah — Trust --}}

@@ -192,6 +192,32 @@ return [
         'amenities' => ['Halal', 'Mesra Keluarga', 'Berhawa Dingin', 'Surau', 'Parking Mudah'],
     ],
 
+    // Stats band — big highlighted count-up numbers (social proof)
+    'stats_band' => [
+        'eyebrow' => 'Angka Yang Bercerita',
+        'heading' => 'Dipercayai. Diulangi. Dikongsi.',
+        'since'   => 'Melayani keluarga Malaysia sejak 2018.',
+        'items'   => [
+            ['value' => '10000', 'suffix' => '+', 'label' => 'Pelanggan gembira'],
+            ['value' => '8973',  'suffix' => '',  'label' => 'Review Google'],
+            ['value' => '4.9',   'suffix' => '★', 'label' => 'Purata rating'],
+            ['value' => '6',     'suffix' => '',  'label' => 'Cawangan di Kedah'],
+        ],
+    ],
+
+    // Social — handles for the social proof strip
+    'social' => [
+        'eyebrow' => 'Ikuti Sofwah',
+        'heading' => 'Sertai ribuan yang kongsi moment mereka.',
+        'body'    => 'Tag kami &amp; lihat komuniti Sofwah di media sosial.',
+        'handle'  => '@sofwah_arabicgrill',
+        'links'   => [
+            ['label' => 'Facebook', 'url' => 'https://www.facebook.com/sofwah_arabicgrill'],
+            ['label' => 'TikTok',   'url' => 'https://www.tiktok.com/@sofwah_arabicgrill'],
+            ['label' => 'Menu Penuh', 'url' => 'https://heyzine.com/flip-book/b1dccc4f35.html'],
+        ],
+    ],
+
     // Wall of Love — REVIEW / Trust. Real Google ratings; live review text in Phase 4.
     'reviews' => [
         'eyebrow'        => 'Wall of Love',

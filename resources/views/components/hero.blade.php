@@ -68,7 +68,7 @@
                     @foreach ($h['stats'] as $s)
                         @php preg_match('/^([\d.,]+)(.*)$/u', $s['value'], $m); $num = isset($m[1]) ? str_replace(',', '', $m[1]) : null; $suf = $m[2] ?? ''; @endphp
                         <div>
-                            <div class="font-display text-2xl font-extrabold text-ink md:text-3xl" @if ($num !== null) data-count="{{ $num }}" data-suffix="{{ $suf }}" @endif>{{ $s['value'] }}</div>
+                            <div class="stat-num font-display text-3xl font-extrabold md:text-4xl" @if ($num !== null) data-count="{{ $num }}" data-suffix="{{ $suf }}" @endif>{{ $s['value'] }}</div>
                             <div class="text-xs text-ink-3">{{ $s['label'] }}</div>
                         </div>
                     @endforeach

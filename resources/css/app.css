@@ -94,6 +94,15 @@
 .shimmer:hover::after{ animation:shimmerSweep .8s ease; }
 @keyframes shimmerSweep{ from{ left:-60% } to{ left:130% } }
 
+/* Highlighted stat numbers — gold gradient + glow, tabular for count-up */
+.stat-num{
+  background:linear-gradient(180deg,#FFDA7C 0%,#FF9A06 85%);
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent;
+  filter:drop-shadow(0 0 22px rgba(255,154,6,.30));
+  font-variant-numeric:tabular-nums; letter-spacing:-.02em;
+}
+
 /* Gradient hover ring for tiles/cards */
 .ring-hover{ position:relative; }
 .ring-hover::before{ content:""; position:absolute; inset:0; border-radius:inherit; padding:1px;
