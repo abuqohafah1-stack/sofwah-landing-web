@@ -242,6 +242,12 @@ return [
         'heading' => 'Sofwah wujud untuk satu sebab.',
         'body_1'  => 'Kami percaya hidangan Arab bukan sekadar makanan — ia cara untuk menyatukan keluarga, meraikan orang tersayang, dan mencipta memori. Itu yang buat kami mula.',
         'body_2'  => 'Dari beberapa buah meja kepada enam cawangan, kami bina Sofwah dengan disiplin, sistem, dan niat yang jelas: hidangan Arab autentik, halal dan berkualiti, di tempat yang setiap keluarga rasa dialu-alukan. Pertumbuhan yang dijaga dengan barakah.',
+        'video'   => [
+            'eyebrow'  => 'Budaya Sofwah',
+            'title'    => 'Grand Annual Staff Awards 2026',
+            'caption'  => 'Kami bina manusia, bukan sekadar restoran.',
+            'drive_id' => '11Ds7S8w9uUdPf7F2vVij7zR6UUWzr3C2',
+        ],
     ],
 
     // Branch Experience — REACH (bento). Facts live in resources/content/branches.php.

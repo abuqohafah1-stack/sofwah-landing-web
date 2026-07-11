@@ -233,6 +233,12 @@ return [
         'heading' => 'Sofwah exists for one reason.',
         'body_1'  => 'We believe Arabic food is more than a meal — it is a way to bring family together, to honour the people we love, and to create memories. That is why we began.',
         'body_2'  => 'From a few tables to six branches, we built Sofwah with discipline, systems, and a clear intention: authentic, halal, quality Arabic food in a place where every family feels welcome. Growth guarded with barakah.',
+        'video'   => [
+            'eyebrow'  => 'Sofwah Culture',
+            'title'    => 'Grand Annual Staff Awards 2026',
+            'caption'  => 'We build people, not just a restaurant.',
+            'drive_id' => '11Ds7S8w9uUdPf7F2vVij7zR6UUWzr3C2',
+        ],
     ],
 
     'branches' => [

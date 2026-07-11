@@ -30,5 +30,17 @@
                 <p class="text-ink-2">{{ $c['story']['body_2'] }}</p>
             </div>
         </div>
+
+        {{-- Culture video — Grand Annual Staff Awards 2026 --}}
+        @if (!empty($c['story']['video']))
+            <div class="mx-auto mt-16 max-w-4xl md:mt-20" data-reveal>
+                <x-video-embed
+                    :drive-id="$c['story']['video']['drive_id']"
+                    poster="images/gallery/ambience-hall.jpg"
+                    :eyebrow="$c['story']['video']['eyebrow']"
+                    :title="$c['story']['video']['title']"
+                    :caption="$c['story']['video']['caption']" />
+            </div>
+        @endif
     </div>
 </section>
