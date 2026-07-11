@@ -41,7 +41,13 @@ class ReservationForm extends Component
             'message'      => 'nullable|string|max:500',
         ]);
 
-        Lead::create($validated + ['source' => 'reservation_form']);
+        // Persist the lead, but never block the WhatsApp hand-off if the DB /
+        // leads table isn't ready yet — the WhatsApp order is the critical path.
+        try {
+            Lead::create($validated + ['source' => 'reservation_form']);
+        } catch (\Throwable $e) {
+            report($e);
+        }
 
         // Open the chosen branch's WhatsApp with a pre-filled message.
         $branch  = $this->branches()->firstWhere('key', $this->branch);
