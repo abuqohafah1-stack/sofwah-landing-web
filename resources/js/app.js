@@ -1,8 +1,8 @@
 /*
- * Alpine is provided by Livewire 3. This module owns analytics + cinematic
- * motion. Count-up is a standalone IntersectionObserver (reliable, runs even
- * before GSAP loads). GSAP/Lenis are dynamically imported for scroll reveals /
- * tilt. ALL motion respects prefers-reduced-motion (WCAG 2.1 AA).
+ * Alpine is provided by Livewire 3. Count-up + scroll reveals use a robust
+ * IntersectionObserver (they run even if GSAP is slow/fails, and never leave
+ * content stuck invisible). GSAP/Lenis add hero entrance, parallax and tilt.
+ * ALL motion respects prefers-reduced-motion (WCAG 2.1 AA).
  */
 
 // GA4 events (no-op until GA4 is configured).
@@ -18,41 +18,87 @@ document.addEventListener('click', (e) => {
     else if (/maps\.app\.goo\.gl|goo\.gl\/maps/.test(href)) track('click_branch', { link_url: href });
 });
 
-/* ---- Count-up numbers (robust: IntersectionObserver + rAF) ---- */
+const REDUCE = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---- Count-up numbers (IntersectionObserver + rAF) ---- */
 (function () {
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const nums = document.querySelectorAll('[data-count]');
     if (!nums.length) return;
-
     const fmt = (v, dec) => (dec ? v.toFixed(1) : Math.round(v).toLocaleString('en-US'));
-
     const run = (el) => {
         const end = parseFloat(el.dataset.count);
         if (isNaN(end)) return;
         const dec = /\./.test(el.dataset.count) ? 1 : 0;
         const suf = el.dataset.suffix || '';
-        if (reduce) { el.textContent = fmt(end, dec) + suf; return; }
-        const dur = 1800;
+        if (REDUCE) { el.textContent = fmt(end, dec) + suf; return; }
         let t0 = null;
         const step = (ts) => {
             if (t0 === null) t0 = ts;
-            const p = Math.min((ts - t0) / dur, 1);
-            const v = end * (1 - Math.pow(1 - p, 3)); // easeOutCubic
-            el.textContent = fmt(v, dec) + suf;
+            const p = Math.min((ts - t0) / 1800, 1);
+            el.textContent = fmt(end * (1 - Math.pow(1 - p, 3)), dec) + suf;
             if (p < 1) requestAnimationFrame(step);
         };
         requestAnimationFrame(step);
     };
-
     if (!('IntersectionObserver' in window)) { nums.forEach(run); return; }
-    const io = new IntersectionObserver((entries) => {
-        entries.forEach((e) => { if (e.isIntersecting) { run(e.target); io.unobserve(e.target); } });
+    const io = new IntersectionObserver((es) => {
+        es.forEach((e) => { if (e.isIntersecting) { run(e.target); io.unobserve(e.target); } });
     }, { threshold: 0.5 });
     nums.forEach((el) => io.observe(el));
 })();
 
-/* ---- GSAP scroll reveals + tilt (dynamically imported) ---- */
-if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+/* ---- Scroll reveals (IntersectionObserver; never leaves content invisible) ---- */
+(function () {
+    if (REDUCE) return; // leave everything visible
+    const singles = [].slice.call(document.querySelectorAll('[data-reveal]'));
+    const groups = [].slice.call(document.querySelectorAll('[data-reveal-stagger]'));
+    if (!singles.length && !groups.length) return;
+
+    const hide = (el) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(28px)';
+        el.style.transition = 'opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1)';
+    };
+    const show = (el, delay) => {
+        el.style.transitionDelay = (delay || 0) + 'ms';
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+    };
+
+    singles.forEach(hide);
+    groups.forEach((g) => [].forEach.call(g.children, hide));
+
+    if (!('IntersectionObserver' in window)) {
+        singles.forEach((el) => show(el));
+        groups.forEach((g) => [].forEach.call(g.children, (c) => show(c)));
+        return;
+    }
+
+    const io = new IntersectionObserver((es) => {
+        es.forEach((e) => {
+            if (!e.isIntersecting) return;
+            const el = e.target;
+            if (el.hasAttribute('data-reveal-stagger')) {
+                [].forEach.call(el.children, (c, i) => show(c, i * 80));
+            } else {
+                show(el);
+            }
+            io.unobserve(el);
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+    singles.forEach((el) => io.observe(el));
+    groups.forEach((el) => io.observe(el));
+
+    // Safety net: never leave anything hidden.
+    setTimeout(() => {
+        singles.forEach((el) => show(el));
+        groups.forEach((g) => [].forEach.call(g.children, (c) => show(c)));
+    }, 3500);
+})();
+
+/* ---- GSAP hero entrance + parallax + tilt (dynamically imported) ---- */
+if (!REDUCE) {
     Promise.all([
         import('gsap'),
         import('gsap/ScrollTrigger'),
@@ -71,16 +117,6 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 
         gsap.to('[data-hero-scrollcue]', { y: 7, opacity: 0.2, repeat: -1, yoyo: true, duration: 1.1, ease: 'sine.inOut' });
 
-        gsap.utils.toArray('[data-reveal]').forEach((el) => {
-            gsap.from(el, { opacity: 0, y: 34, duration: 0.9, ease: 'power3.out',
-                scrollTrigger: { trigger: el, start: 'top 86%' } });
-        });
-
-        gsap.utils.toArray('[data-reveal-stagger]').forEach((group) => {
-            gsap.from(group.children, { opacity: 0, y: 30, scale: 0.97, duration: 0.7, ease: 'power3.out', stagger: 0.08,
-                scrollTrigger: { trigger: group, start: 'top 84%' } });
-        });
-
         gsap.utils.toArray('[data-parallax] img, img[data-parallax]').forEach((img) => {
             gsap.to(img, { yPercent: -8, ease: 'none',
                 scrollTrigger: { trigger: img, start: 'top bottom', end: 'bottom top', scrub: true } });
@@ -98,7 +134,5 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             });
             tilt.addEventListener('mouseleave', () => { setX(0); setY(0); });
         }
-
-        ScrollTrigger.refresh();
     });
 }
