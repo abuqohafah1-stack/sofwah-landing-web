@@ -59,9 +59,10 @@
             </a>
 
             <nav class="ms-auto hidden items-center gap-7 text-sm text-ink-2 md:flex" aria-label="Utama">
-                <a href="#menu" class="transition hover:text-ink">{{ $c['nav']['menu'] }}</a>
-                <a href="#cerita" class="transition hover:text-ink">{{ $c['nav']['story'] }}</a>
-                <a href="#cawangan" class="transition hover:text-ink">{{ $c['nav']['branches'] }}</a>
+                <a href="{{ url('/') }}#menu" class="transition hover:text-ink">{{ $c['nav']['menu'] }}</a>
+                <a href="{{ url('/') }}#cerita" class="transition hover:text-ink">{{ $c['nav']['story'] }}</a>
+                <a href="{{ url('/') }}#cawangan" class="transition hover:text-ink">{{ $c['nav']['branches'] }}</a>
+                <a href="{{ route('career') }}{{ $lang === 'en' ? '?lang=en' : '' }}" class="transition hover:text-ink">{{ $career['nav_label'] ?? ($lang === 'en' ? 'Careers' : 'Kerjaya') }}</a>
             </nav>
 
             {{-- EN / BM toggle --}}
@@ -70,7 +71,7 @@
                 <a href="?lang=en" hreflang="en" aria-label="English" @if ($lang === 'en') aria-current="true" @endif class="px-3 py-1.5 {{ $lang === 'en' ? 'bg-brand text-white' : 'text-ink-3' }}">EN</a>
             </div>
 
-            <a href="#cawangan"
+            <a href="{{ url('/') }}#cawangan"
                class="hidden rounded-xl2 bg-brand px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 hover:shadow-glow sm:inline-flex">
                 {{ $c['nav']['order'] }}
             </a>
@@ -89,6 +90,10 @@
                     <img src="{{ asset('images/brand/logo-sofwah-white-horizontal.png') }}"
                          alt="Sofwah Arabic Grill" class="h-7 w-auto">
                     <p class="mt-4 text-sm text-ink-2">{{ $c['footer']['tagline'] }}</p>
+                    <a href="{{ route('career') }}{{ $lang === 'en' ? '?lang=en' : '' }}"
+                       class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-gold transition hover:text-accent">
+                        {{ $lang === 'en' ? 'Careers at Sofwah' : 'Kerjaya di Sofwah' }} <span aria-hidden="true">→</span>
+                    </a>
                 </div>
                 <div>
                     <h2 class="text-xs font-semibold uppercase tracking-[0.18em] text-ink-3">

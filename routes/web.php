@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\CareerController;
 use App\Http\Controllers\LandingController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingController::class, 'index'])->name('landing');
+Route::get('/kerjaya', [CareerController::class, 'index'])->name('career');
+Route::get('/career', [CareerController::class, 'index']);
 
 // robots.txt is a static file at public/robots.txt — Forge's nginx has a
 // `location = /robots.txt` block that serves it directly (a Laravel route would
