@@ -1,5 +1,5 @@
 {{-- sections/wall-of-love.blade.php — REVIEW / Trust. Real Google ratings + accolade. --}}
-<section id="reviews" class="border-t border-white/5">
+<section id="reviews" class="warm-glow border-t border-white/5">
     <div class="mx-auto max-w-content px-6 py-24 md:py-32">
         @php $totalReviews = collect($branches)->sum('reviews'); @endphp
         <div class="grid gap-8 md:grid-cols-[1.3fr_1fr] md:items-end">

@@ -1,5 +1,5 @@
 {{-- sections/faq.blade.php — Confidence · native <details> accordion (no JS). Feeds FAQPage schema (Phase 5). --}}
-<section id="faq" class="border-t border-white/5">
+<section id="faq" class="warm-glow border-t border-white/5">
     <div class="mx-auto max-w-3xl px-6 py-24 md:py-32">
         <x-section-heading
             :eyebrow="$c['faq']['eyebrow']"

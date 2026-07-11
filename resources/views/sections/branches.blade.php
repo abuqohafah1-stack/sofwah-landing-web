@@ -1,5 +1,5 @@
 {{-- sections/branches.blade.php — REACH · bento (faham dalam 3 saat). Real WhatsApp + Maps. --}}
-<section id="cawangan" class="border-t border-white/5">
+<section id="cawangan" class="warm-glow border-t border-white/5">
     <div class="mx-auto max-w-content px-6 py-24 md:py-32">
         <x-section-heading
             :eyebrow="$c['branches']['eyebrow']"
@@ -8,7 +8,7 @@
 
         <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-reveal-stagger>
             @foreach ($branches as $b)
-                <div class="glow-card flex flex-col rounded-xl2 border border-white/10 bg-surface p-6">
+                <div class="glow-card ring-hover flex flex-col rounded-xl2 border border-white/10 bg-surface p-6">
                     <div class="flex items-start justify-between gap-3">
                         <h3 class="font-display text-lg font-semibold text-ink">
                             Sofwah {{ $b['city'] }}@if ($b['area'])<span class="text-ink-3"> · {{ $b['area'] }}</span>@endif
