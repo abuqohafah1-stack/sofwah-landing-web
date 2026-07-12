@@ -10,13 +10,13 @@
 
 return [
     'leadership' => [
-        ['name' => 'Abu Qohafah',         'role' => 'Founder & CEO',                    'tier' => 1, 'photo' => null],
-        ['name' => 'Nur Afiqah',          'role' => 'Co-Founder & General Manager',     'tier' => 1, 'photo' => null],
-        ['name' => 'Nur Azira',           'role' => 'Finance & Account Manager',        'tier' => 2, 'photo' => null],
-        ['name' => 'NurKaisah Firzanah',  'role' => 'Human Resources Generalist',       'tier' => 2, 'photo' => null],
-        ['name' => 'Mazliatul Farain',    'role' => 'Company Secretary',                'tier' => 2, 'photo' => null],
-        ['name' => 'Nur Syaidatul Akmar', 'role' => 'Marketing, Brand & CX Manager',    'tier' => 2, 'photo' => null],
-        ['name' => 'Muhammad Hakeem',     'role' => 'Operational & Sales Manager',      'tier' => 2, 'photo' => null],
+        ['name' => 'Abu Qohafah',         'role' => 'Founder & CEO',                    'tier' => 1, 'photo' => 'images/team/abu.jpg'],
+        ['name' => 'Nur Afiqah',          'role' => 'Co-Founder & General Manager',     'tier' => 1, 'photo' => 'images/team/afiqah.jpg'],
+        ['name' => 'Nur Azira',           'role' => 'Finance & Account Manager',        'tier' => 2, 'photo' => 'images/team/azira.jpg'],
+        ['name' => 'NurKaisah Firzanah',  'role' => 'Human Resources Generalist',       'tier' => 2, 'photo' => 'images/team/nurkaisah.jpg'],
+        ['name' => 'Mazliatul Farain',    'role' => 'Company Secretary',                'tier' => 2, 'photo' => 'images/team/farain.jpg'],
+        ['name' => 'Nur Syaidatul Akmar', 'role' => 'Marketing, Brand & CX Manager',    'tier' => 2, 'photo' => 'images/team/syaidatul.jpg'],
+        ['name' => 'Muhammad Hakeem',     'role' => 'Operational & Sales Manager',      'tier' => 2, 'photo' => 'images/team/hakeem.jpg'],
     ],
 
     'departments' => [

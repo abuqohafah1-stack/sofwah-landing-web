@@ -6,7 +6,7 @@ import path from 'node:path';
 
 const dirs = [
     'public/images/hero', 'public/images/menu', 'public/images/gallery',
-    'public/images/menu-ai', 'public/images/trust',
+    'public/images/menu-ai', 'public/images/trust', 'public/images/team',
 ];
 const kb = (n) => Math.round(n / 1024);
 

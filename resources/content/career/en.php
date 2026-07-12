@@ -41,6 +41,8 @@ return [
         'heading' => 'We build people, not just a restaurant.',
         'body_1'  => 'At Sofwah you\'re more than an employee — you\'re part of a family that grows together. We invest in training, leadership and clear systems.',
         'body_2'  => 'Every year we celebrate the team\'s achievements at our Grand Annual Staff Awards — because good work deserves to be recognised.',
+        'photo_eyebrow' => 'The Sofwah Family',
+        'photo_caption' => 'One team, one goal — serving the Ummah the finest Arabic Grill.',
     ],
 
     'leadership' => [

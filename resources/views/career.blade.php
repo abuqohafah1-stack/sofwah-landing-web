@@ -80,6 +80,20 @@
                         caption="{{ $career['culture']['heading'] }}" />
                 </div>
             </div>
+
+            {{-- Real team photo band --}}
+            <figure class="group relative mt-14 overflow-hidden rounded-xl3 border border-white/10 shadow-2xl ring-1 ring-gold/15" data-reveal>
+                <x-img src="images/team/staf.jpg" width="1600" height="1201"
+                       alt="Pasukan Sofwah Arabic Grill"
+                       class="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
+                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg via-bg/25 to-transparent"></div>
+                <figcaption class="absolute inset-x-0 bottom-0 p-6 md:p-9">
+                    <span class="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-black/35 px-3 py-1.5 text-xs font-semibold text-gold backdrop-blur">
+                        <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>{{ $career['culture']['photo_eyebrow'] }}
+                    </span>
+                    <p class="mt-3 max-w-xl font-display text-lg font-semibold text-ink text-balance md:text-2xl">{{ $career['culture']['photo_caption'] }}</p>
+                </figcaption>
+            </figure>
         </div>
     </section>
 
@@ -92,7 +106,14 @@
             <div class="mx-auto mt-14 flex max-w-2xl flex-col items-center justify-center gap-6 sm:flex-row" data-reveal-stagger>
                 @foreach ($tier1 as $i => $m)
                     <div class="flex flex-col items-center text-center">
-                        <span class="flex h-28 w-28 items-center justify-center rounded-3xl font-display text-3xl font-extrabold text-white shadow-xl ring-2 ring-white/10" style="background:{{ $avatarGrad[$i % count($avatarGrad)] }}">{{ $initials($m['name']) }}</span>
+                        @if (!empty($m['photo']))
+                            <span class="relative block h-28 w-28 overflow-hidden rounded-3xl shadow-xl ring-2 ring-gold/30">
+                                <x-img :src="$m['photo']" :alt="$m['name'] . ' — ' . $m['role']" width="112" height="112" class="h-full w-full object-cover" />
+                                <span class="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/10"></span>
+                            </span>
+                        @else
+                            <span class="flex h-28 w-28 items-center justify-center rounded-3xl font-display text-3xl font-extrabold text-white shadow-xl ring-2 ring-white/10" style="background:{{ $avatarGrad[$i % count($avatarGrad)] }}">{{ $initials($m['name']) }}</span>
+                        @endif
                         <div class="mt-3 font-display text-lg font-bold text-ink">{{ $m['name'] }}</div>
                         <div class="text-sm text-accent">{{ $m['role'] }}</div>
                     </div>
@@ -103,7 +124,13 @@
             <div class="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5" data-reveal-stagger>
                 @foreach ($tier2 as $i => $m)
                     <div class="glow-card flex flex-col items-center rounded-xl2 border border-white/10 bg-surface p-5 text-center">
-                        <span class="flex h-20 w-20 items-center justify-center rounded-2xl font-display text-xl font-extrabold text-white shadow-lg" style="background:{{ $avatarGrad[$i % count($avatarGrad)] }}">{{ $initials($m['name']) }}</span>
+                        @if (!empty($m['photo']))
+                            <span class="relative block h-20 w-20 overflow-hidden rounded-2xl shadow-lg ring-1 ring-gold/25">
+                                <x-img :src="$m['photo']" :alt="$m['name'] . ' — ' . $m['role']" width="80" height="80" class="h-full w-full object-cover" />
+                            </span>
+                        @else
+                            <span class="flex h-20 w-20 items-center justify-center rounded-2xl font-display text-xl font-extrabold text-white shadow-lg" style="background:{{ $avatarGrad[$i % count($avatarGrad)] }}">{{ $initials($m['name']) }}</span>
+                        @endif
                         <div class="mt-3 text-sm font-semibold text-ink">{{ $m['name'] }}</div>
                         <div class="mt-0.5 text-xs text-ink-3">{{ $m['role'] }}</div>
                     </div>

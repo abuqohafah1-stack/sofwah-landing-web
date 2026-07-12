@@ -43,6 +43,8 @@ return [
         'heading' => 'Kami bina manusia, bukan sekadar restoran.',
         'body_1'  => 'Di Sofwah, anda bukan sekadar pekerja — anda sebahagian daripada keluarga yang berkembang bersama. Kami melabur dalam latihan, kepimpinan dan sistem yang jelas.',
         'body_2'  => 'Setiap tahun kami raikan pencapaian pasukan menerusi Grand Annual Staff Awards — kerana usaha yang baik layak diiktiraf.',
+        'photo_eyebrow' => 'Keluarga Sofwah',
+        'photo_caption' => 'Satu pasukan, satu matlamat — melayani Ummah dengan Arabic Grill terbaik.',
     ],
 
     'leadership' => [
