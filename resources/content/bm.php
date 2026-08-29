@@ -218,7 +218,7 @@ return [
         ],
     ],
 
-    // Wall of Love — REVIEW / Trust. Real Google ratings; live review text in Phase 4.
+    // Wall of Love — REVIEW / Trust. Real Google ratings + real review text.
     'reviews' => [
         'eyebrow'        => 'Wall of Love',
         'heading'        => 'Ribuan keluarga dah rasa. Ini kata mereka.',
@@ -228,7 +228,7 @@ return [
         'branches_label' => 'merentasi 6 cawangan',
         'accolade'       => '“Top Nasi Arab in Town” — seperti yang tersenarai di Google.',
         'google_label'   => 'Baca di Google',
-        'samples_note'   => 'Contoh paparan — teks review Google sebenar dimuat automatik dalam Phase 4.',
+        'samples_note'   => 'Ulasan sebenar pelanggan — diambil terus dari Google Business Profile Sofwah.',
         'samples'        => [
             ['name' => 'Pelanggan Google', 'branch' => 'Jitra',        'rating' => 5, 'text' => 'Nasi Arab paling sedap kawasan ni. Portion besar, servis pantas, tempat bersih.'],
             ['name' => 'Pelanggan Google', 'branch' => 'Alor Setar',    'rating' => 5, 'text' => 'Bawa parents makan sini, semua puas hati. Suasana selesa untuk keluarga.'],

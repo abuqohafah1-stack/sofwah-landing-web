@@ -2,23 +2,26 @@
 
 /*
 |--------------------------------------------------------------------------
-| SOFWAH-WEB · Sample reviews (PLACEHOLDER)
+| SOFWAH-WEB · Google reviews (REAL — curated)
 |--------------------------------------------------------------------------
-| Illustrative set powering the ReviewWall filter UI until real Google
-| reviews are synced (Places API) or pasted by the team. Swap this source
-| for the cached `reviews` DB table when live sync is enabled. Do NOT present
-| these as verified customer quotes — the section labels them as samples, and
-| only real data feeds the AggregateRating schema.
+| Real customer reviews taken verbatim from the Sofwah Google Business
+| Profile (business.google.com), lightly trimmed for length. Two per branch.
+| Powers the Livewire ReviewWall (filter by branch + rating) and social proof.
+| Refresh periodically with newer reviews. The AggregateRating schema is fed by
+| the real per-branch counts/averages in branches.php — not by this list.
 */
 
 return [
-    ['name' => 'Pelanggan Google', 'branch' => 'jitra',              'rating' => 5, 'text' => 'Nasi Arab paling sedap kawasan ni. Portion besar, servis pantas, tempat bersih.'],
-    ['name' => 'Pelanggan Google', 'branch' => 'alor-setar-pegawai', 'rating' => 5, 'text' => 'Bawa parents makan sini, semua puas hati. Suasana selesa untuk keluarga.'],
-    ['name' => 'Pelanggan Google', 'branch' => 'kuala-nerang',       'rating' => 5, 'text' => 'Grill platter memang menang, salsa dia special. Mesti datang lagi.'],
-    ['name' => 'Pelanggan Google', 'branch' => 'gurun',              'rating' => 5, 'text' => 'Mendy dia wangi dan lembut. Anak-anak pun suka. Tempat mesra keluarga.'],
-    ['name' => 'Pelanggan Google', 'branch' => 'sungai-petani',      'rating' => 4, 'text' => 'Makanan sedap, harga berpatutan. Waktu peak kena tunggu sikit tapi berbaloi.'],
-    ['name' => 'Pelanggan Google', 'branch' => 'alor-setar-aman',    'rating' => 5, 'text' => 'Senang nak singgah masa shopping. Ayam grill dia juicy, sos lada hitam best.'],
-    ['name' => 'Pelanggan Google', 'branch' => 'jitra',              'rating' => 5, 'text' => 'Layanan staff mesra, tempat bersih dan selesa. Recommend untuk makan keluarga.'],
-    ['name' => 'Pelanggan Google', 'branch' => 'kuala-nerang',       'rating' => 5, 'text' => 'Rasa Arab yang autentik. Belanja parents sini memang berbaloi.'],
-    ['name' => 'Pelanggan Google', 'branch' => 'alor-setar-pegawai', 'rating' => 4, 'text' => 'Sedap dan mengenyangkan. Akan datang lagi bawa kawan-kawan.'],
+    ['name' => 'Aiman Zikri',    'branch' => 'sungai-petani',      'rating' => 5, 'text' => 'Nasi arab yang sangat sedap, kena dengan tekak Melayu. Puas hati sangat, dah repeat banyak kali.'],
+    ['name' => 'Salwa Jaafar',   'branch' => 'alor-setar-aman',    'rating' => 5, 'text' => 'Makanan sedap, suasana pun best! Tempat selesa dan memang enjoy makan dekat sini. Sesuai datang dengan family atau kawan-kawan. Recommended!'],
+    ['name' => 'Adam Safwan',    'branch' => 'kuala-nerang',       'rating' => 5, 'text' => 'Nasi arab dekat sini sangat sedap dan harga pun berbaloi. Kedai pun sangat selesa.'],
+    ['name' => 'Ahmad Zabidi',   'branch' => 'jitra',              'rating' => 5, 'text' => 'The food was absolutely delicious. Every dish was fresh, flavourful and beautifully presented. The staff were friendly and attentive, making the whole dining experience enjoyable.'],
+    ['name' => 'Shikin Jaafar',  'branch' => 'alor-setar-pegawai', 'rating' => 5, 'text' => 'Makan semua sedap. Puas hati. Servis baik, mesra pelanggan.'],
+    ['name' => 'Ummuhani Johar', 'branch' => 'gurun',              'rating' => 5, 'text' => 'Makanan sedap, servis memang memuaskan dan baik.'],
+    ['name' => 'Mohd Firdaus',   'branch' => 'sungai-petani',      'rating' => 5, 'text' => 'Nasi arab paling sedap di Kedah! Recommended A+.'],
+    ['name' => 'Syarif Raihan',  'branch' => 'kuala-nerang',       'rating' => 5, 'text' => 'Staff ramah dan mesra, sedap boleh repeat lagi lepas ni.'],
+    ['name' => 'Khairul Anuar',  'branch' => 'jitra',              'rating' => 5, 'text' => 'Nasi sedap dan portion banyak. Staff ramah. Lepas ni repeat lagi.'],
+    ['name' => 'Azizah Mustafa', 'branch' => 'alor-setar-pegawai', 'rating' => 5, 'text' => 'Makanan memuaskan, servis cepat, pekerja pun membantu.'],
+    ['name' => 'Roziyati Rodzi', 'branch' => 'alor-setar-aman',    'rating' => 5, 'text' => 'Makanan sedap, harga rahmah dan berbaloi.'],
+    ['name' => 'Fukriyah Subri', 'branch' => 'gurun',              'rating' => 5, 'text' => 'Makan semua sedap-sedap.'],
 ];
