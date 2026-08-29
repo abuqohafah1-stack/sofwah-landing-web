@@ -162,7 +162,7 @@
                             @endforeach
                         </ul>
                         <a href="{{ $deptWa }}" target="_blank" rel="noopener"
-                           class="mt-6 inline-flex items-center justify-center gap-2 rounded-xl2 bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:brightness-110 hover:shadow-glow">
+                           class="mt-6 inline-flex items-center justify-center gap-2 rounded-xl2 bg-whatsapp px-5 py-3 text-sm font-semibold text-white transition hover:brightness-110">
                             <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.5 14.2c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-3.2-.7-2.7-1.1-4.4-3.9-4.5-4-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.6-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.1.1.3 0 .5l-.4.6-.3.3c-.2.1-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.2.5.2.5.4.1.2.1.9-.1 1.4Z"/></svg>
                             {{ $career['openings']['dept_apply'] }}
                         </a>
@@ -198,7 +198,7 @@
             <h2 class="mx-auto mt-4 max-w-2xl font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-ink text-balance md:text-5xl">{{ $career['apply']['heading'] }}</h2>
             <p class="mx-auto mt-5 max-w-xl text-ink-2 md:text-lg">{{ $career['apply']['body'] }}</p>
             <a href="{{ $applyGeneral }}" target="_blank" rel="noopener"
-               class="shimmer mt-9 inline-flex items-center justify-center gap-2 rounded-xl2 bg-brand px-8 py-4 font-semibold text-white shadow-glow transition hover:brightness-110">
+               class="shimmer mt-9 inline-flex items-center justify-center gap-2 rounded-xl2 bg-whatsapp px-8 py-4 font-semibold text-white transition hover:brightness-110">
                 <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.5 14.2c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-3.2-.7-2.7-1.1-4.4-3.9-4.5-4-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.6-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.1.1.3 0 .5l-.4.6-.3.3c-.2.1-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.2.5.2.5.4.1.2.1.9-.1 1.4Z"/></svg>
                 {{ $career['apply']['cta'] }}
             </a>

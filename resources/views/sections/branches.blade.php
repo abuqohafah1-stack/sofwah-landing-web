@@ -24,7 +24,7 @@
 
                     <div class="mt-auto flex gap-2 pt-6">
                         <a href="{{ $b['wa'] }}" target="_blank" rel="noopener"
-                           class="flex-1 rounded-xl2 bg-brand py-2.5 text-center text-sm font-semibold text-white transition hover:brightness-110 hover:shadow-glow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
+                           class="flex-1 rounded-xl2 bg-whatsapp py-2.5 text-center text-sm font-semibold text-white transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-whatsapp">
                             {{ $c['branches']['order_label'] }}
                         </a>
                         <a href="{{ $b['maps'] }}" target="_blank" rel="noopener"
