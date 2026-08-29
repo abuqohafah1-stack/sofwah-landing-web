@@ -16,4 +16,9 @@ return [
     // Default WhatsApp order number (fallback). Per-branch numbers live in
     // resources/content/branches.php.
     'whatsapp_default' => env('WHATSAPP_ORDER_DEFAULT', '60142288956'),
+
+    // WhatsApp number for job applications (the /kerjaya "Apply" button). HR has
+    // no dedicated line yet, so this falls back to the order number — set
+    // WHATSAPP_HR in .env the day HR gets its own number, no code change needed.
+    'whatsapp_hr' => env('WHATSAPP_HR') ?: env('WHATSAPP_ORDER_DEFAULT', '60142288956'),
 ];
