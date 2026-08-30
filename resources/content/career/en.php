@@ -80,7 +80,7 @@ return [
         'heading'   => 'Ready to build a career with Sofwah?',
         'body'      => 'Apply directly via WhatsApp — quick and easy.',
         'cta'       => 'Apply via WhatsApp',
-        'wa_number' => '60142288956',
+        'wa_number' => config('sofwah.whatsapp_hr'),
         'wa_text'   => 'Assalamualaikum Sofwah, I\'m interested in applying for a position at Sofwah Arabic Grill.',
         'note'      => 'Please include your resume & the role you\'re interested in.',
     ],

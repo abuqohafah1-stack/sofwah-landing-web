@@ -16,6 +16,7 @@ export default {
         brand:   '#730D04', // Deep Arabic Red (~15%) — primary CTA, active
         accent:  '#FF9A06', // Golden Orange (~10%) — hover, ratings, highlights
         gold:    '#FFDA7C', // Luxury Gold (~5%) — signature/VIP, sparingly
+        whatsapp: '#25D366', // WhatsApp brand green — WhatsApp CTAs only
         ink: {
           DEFAULT: '#FFFFFF', // primary text
           2: '#D1D5DB',       // secondary text

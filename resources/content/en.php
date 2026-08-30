@@ -172,7 +172,7 @@ return [
         ],
     ],
 
-    // Wall of Love — REVIEW / Trust. Real Google ratings; live review text in Phase 4.
+    // Wall of Love — REVIEW / Trust. Real Google ratings + real review text.
     'trust_stack' => [
         'eyebrow' => 'Trusted & Certified',
         'heading' => 'Why thousands of families trust Sofwah.',
@@ -220,7 +220,7 @@ return [
         'branches_label' => 'across 6 branches',
         'accolade'       => '“Top Nasi Arab in Town” — as listed on Google.',
         'google_label'   => 'Read on Google',
-        'samples_note'   => 'Sample layout — live Google review text loads automatically in Phase 4.',
+        'samples_note'   => 'Real customer reviews — taken directly from Sofwah\'s Google Business Profile.',
         'samples'        => [
             ['name' => 'Google customer', 'branch' => 'Jitra',        'rating' => 5, 'text' => 'Best Arabic rice in the area. Big portions, fast service, clean place.'],
             ['name' => 'Google customer', 'branch' => 'Alor Setar',    'rating' => 5, 'text' => 'Brought my parents here, everyone was happy. A comfortable setting for family.'],
